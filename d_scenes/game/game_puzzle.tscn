@@ -36,16 +36,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ButtonQuitYes" type="TextureButton" parent="Middleground/Buttons/ButtonQuit"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ButtonQuitNo" type="TextureButton" parent="Middleground/Buttons/ButtonQuit"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Middleground/Buttons/ButtonQuit"]
 
 [node name="ButtonHints" type="TextureButton" parent="Middleground/Buttons"]

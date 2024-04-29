@@ -118,6 +118,28 @@ public partial class Location : Ui.UiBase
 		arrows.ForEach((arrow) => arrow.OnLocation_ShowArrows(this));
 	}
 	
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && (mouseEvent.ButtonIndex == MouseButton.Left))
+		{
+			foreach(Arrow point in arrows)
+			{
+				if (point.is_hovered() == false) // restore location UI if player doesn't click arrow
+				{
+					var npcs = GetTree().GetNodesInGroup(CharacterBase.GROUP).ToList<CharacterBase>();
+					var coins = GetTree().GetNodesInGroup(HintCoin.GROUP).ToList<HintCoin>();
+					var popups = GetTree().GetNodesInGroup(PopupZone.GROUP).ToList<PopupZone>();
+					arrows = GetTree().GetNodesInGroup(Arrow.GROUP).ToList<Arrow>();
+					
+					npcs.ForEach((npc) => npc.PressedNpc += OnNpc_PressedNpc);
+					coins.ForEach((coin) => coin.Collected += OnCoin_Collected);
+					popups.ForEach((popup) => popup.ZonePressed += OnPopupZone_Pressed);
+					arrows.ForEach((arrow) => arrow.Hide());
+				}
+			}
+		}
+	}
+
 	public void OnArrow_Pressed(string pathArrow)
 	{
 		animations.AnimationFinished += (_) =>
@@ -127,8 +149,8 @@ public partial class Location : Ui.UiBase
 		
 		animations.Play(ANIM_FADE_OUT);
 	}
-	
-	
+
+
 	
 	private void OnCoin_Collected()
 	{

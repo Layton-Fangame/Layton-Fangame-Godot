@@ -11,6 +11,15 @@ public partial class Trunk : Ui.UiBase
 	// Export variables
 	[ExportGroup("Imports")]
 	[Export(PropertyHint.File,"*.tscn")] private string sceneLocation;
+	[Export] protected TextureButton buttonJournal;
+	[Export] protected TextureButton buttonMysteries;
+	[Export] protected TextureButton buttonPuzzles;
+	[Export] protected TextureButton buttonSave;
+	[Export] protected TextureButton buttonEpisodes;
+	[Export] protected TextureButton buttonCollection;
+	[Export] protected TextureButton buttonMinigame_0;
+	[Export] protected TextureButton buttonMinigame_1;
+	[Export] protected TextureButton buttonMinigame_2;
 	[Export] protected TextureButton buttonClose;
 	[Export] protected AudioStreamPlayer buttonCloseSfx;
 	[Export] protected Label labelLocationCurrent;
